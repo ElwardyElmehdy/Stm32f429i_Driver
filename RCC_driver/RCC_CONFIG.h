@@ -101,8 +101,8 @@ typedef  enum
 
 
 typedef enum{
-	HSE=0;
-	HSI;
+	HSE=0,
+	HSI,
 	PLL
 }ClkSrcName_t;   
 
@@ -110,7 +110,7 @@ typedef enum{
 
 
 typedef enum {
-	HSE_Crystal=0;
+	HSE_Crystal=0,
 	HSE_RC
 	
 }HSESrcName_t;

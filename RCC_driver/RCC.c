@@ -11,7 +11,7 @@
 #include "RCC.h"
 
 
-void vRCC_SetSYSCLK(ClKSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSrc, AHBPreName_t AHB_Prescaler, APB1PreName_t APB1_Prescaler, APB2PreName_t APB2_Prescaler)
+void vRCC_SetSYSCLK(ClkSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSrc,AHBPreName_t AHB_Prescaler, APB1PreName_t APB1_Prescaler, APB2PreName_t APB2_Prescaler)
 {
 
 	switch(ClkSrc)
@@ -34,7 +34,7 @@ void vRCC_SetSYSCLK(ClKSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSr
 				RCC_CFGR |=(1U<<0); // SYSCLK equal to HSE
 				RCC_CFGR &=~(1U<<1);
 				break;
-				default: break;
+				
 				
 			}
 		break;
@@ -67,11 +67,62 @@ void vRCC_SetSYSCLK(ClKSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSr
 				RCC_CFGR &=~(1U<<0); // SYSCLK equal to PLL
 				RCC_CFGR |=(1U<<1);
 				break;
-				default: break;
+				
 			}
 		break;
-		default: break;
 		
+		
+	}
+	
+	
+	switch(AHB_Prescaler){
+		case 0:
+			RCC_CFGR |= (0<<4);break;
+		case 1:
+			RCC_CFGR |= (8<<4);break;
+    case 2:
+			RCC_CFGR |= (9<<4);break;		
+		case 3:
+			RCC_CFGR |= (10<<4);break;
+		case 4:
+			RCC_CFGR |= (11<<4);break;
+    case 5:
+			RCC_CFGR |= (12<<4);break;
+    case 6:
+			RCC_CFGR |= (13<<4);break;
+		case 7:
+			RCC_CFGR |= (14<<4);break;
+    case 8:
+			RCC_CFGR |= (15<<4);break;				
+	}
+	
+	switch(APB1_Prescaler){
+		case 0:
+			RCC_CFGR |= (0<<10);break;
+		case 1:
+			RCC_CFGR |= (4<<10);break;
+    case 2:
+			RCC_CFGR |= (5<<10);break;		
+		case 3:
+			RCC_CFGR |= (6<<10);break;
+		case 4:
+			RCC_CFGR |= (7<<10);break;
+    			
+	}
+	
+	
+	switch(APB2_Prescaler){
+		case 0:
+			RCC_CFGR |= (0<<13);break;
+		case 1:
+			RCC_CFGR |= (4<<13);break;
+    case 2:
+			RCC_CFGR |= (5<<13);break;		
+		case 3:
+			RCC_CFGR |= (6<<13);break;
+		case 4:
+			RCC_CFGR |= (7<<13);break;
+    			
 	}
 	
 	
@@ -82,7 +133,7 @@ void vRCC_SetSYSCLK(ClKSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSr
 
 
 
-void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t option_P,PLLQPreName_t option_Q ){
+void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNPreName_t option_N ,PLLPPreName_t option_P,PLLQPreName_t option_Q ){
 	switch (option_M){
 		case 0:
 			RCC_PLLCFGR &=~(1U<<0);
@@ -119,7 +170,7 @@ void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t
 			RCC_PLLCFGR &=~(1U<<2);	
 			RCC_PLLCFGR |=(1U<<3);	
 		    break;
-		default: break;	
+			
 			
 	}
 	
@@ -203,7 +254,7 @@ void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t
 			RCC_PLLCFGR &=~(1U<<13);
 			RCC_PLLCFGR &=~(1U<<14);
 			break;	
-		default:break;	
+			
 			
 	}
 	
@@ -214,7 +265,7 @@ void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t
 			break;
 		case 1:
 			RCC_PLLCFGR |=(1U<<16);
-			RCC_PLLCFGR &=~(1U<<17);;
+			RCC_PLLCFGR &=~(1U<<17);
 			break;
 		
 		case 2:
@@ -226,7 +277,7 @@ void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t
 			RCC_PLLCFGR |=(1U<<17);
 			break;	
 		
-		default: break;	
+			
 			
 	}
 	
@@ -252,7 +303,7 @@ void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t
 			RCC_PLLCFGR |=(1U<<27);
 			break;	
 		
-		default: break;	
+		
 			
 	}
 	
@@ -279,8 +330,7 @@ void vRCC_EnPerClk(BusName_t BusName, uint8 PerName)
 		//APB2
 		case 4: RCC_APB2ENR |=(1U<<PerName); break;
 		
-		default:break;
-			
+		
 	}
 	
 	

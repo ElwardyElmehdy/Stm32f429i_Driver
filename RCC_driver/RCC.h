@@ -21,8 +21,8 @@
  *
  *******************************************************************************/
 
-void vRCC_SetSYSCLK(ClKSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSrc, AHBPreName_t AHB_Prescaler, APB1PreName_t APB1_Prescaler, APB2PreName_t APB2_Prescaler);
-void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNreName_t option_N ,PLLPPreName_t option_P ,PLLQPreName_t option_Q);
+void vRCC_SetSYSCLK(ClkSrcName_t ClkSrc, HSESrcName_t HSESRC, PLLSrcName_t PLLSrc, AHBPreName_t AHB_Prescaler, APB1PreName_t APB1_Prescaler, APB2PreName_t APB2_Prescaler);
+void vRCC_setPLLCFGR(PLLMPreName_t option_M,PLLNPreName_t option_N ,PLLPPreName_t option_P ,PLLQPreName_t option_Q);
 void vRCC_EnPerClk(BusName_t BusName, uint8 PerName);
 
 
